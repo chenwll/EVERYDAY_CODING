@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>关闭标签页显示弹窗</title>
+</head>
+<script>
+    window.onbeforeunload = function (event) {
+        window.confirm();
+        console.log('aaa')
+        // Cancel the event as stated by the standard.
+        event.preventDefault();
+        // Chrome requires returnValue to be set.
+        event.returnValue = '';
+    }
+    console.log(window.onbeforeunload)
+    setTimeout(() => {
+        console.log(window.onbeforeunload)
+    },500)
+
+</script>
+<body>
+
+</body>
+</html>

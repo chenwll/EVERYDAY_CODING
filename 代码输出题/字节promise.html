@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字节promise</title>
+</head>
+<body>
+<script>
+    console.log(Promise.resolve(4)) // 这是一个promise对象
+    Promise.resolve().then(() => {
+        console.log(0);
+        return Promise.resolve(4);
+    }).then((res) => {
+        // 为什么这里输出的是4，而不是一个Promise对象
+        console.log(res)
+    })
+
+    Promise.resolve().then(() => {
+        console.log(1);
+    }).then(() => {
+        console.log(2)
+    }).then(() => {
+        console.log(3)
+    }).then(() => {
+        console.log(5)
+    }).then(() => {
+        console.log(6)
+    })
+    // 会等所有的微任务执行完毕之后
+    setTimeout(() => {console.log('end')},0);
+</script>
+</body>
+</html>

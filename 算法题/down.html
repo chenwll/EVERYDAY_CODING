@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<script>
+    const res = [
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglKS8GPUEN4N3RlBvfxGByII-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglCKNX1pL1QN1wyZw7ljTTYY-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglPQuu30fCMGjEUYr2EN5RA4-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglA5MrWlErYs1YnReH9kQP7U-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglHG31q7Ob2TrgckidMT8nLk-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglHMxLWhDMZc1WUblaTnj1Zk-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglBW4IYovfkb*ydIHFMK6UXE-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglM0nPezpsgnPk2QW1KqNif4-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglPSZ_ShqQVpQKL30TcuV9tw-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglNwtXvikBLffTI7DXO5SIP8-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglIssnvx0upfK_RJdZQsoTco-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglIUuHSTCMeNnr4j5L6B6R0I-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglCF6q7TgiJceiZE0U6WNTcY-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglNQLPpdBn8FN8YlLBndKzHc-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglOywbc0Yc7GOfYOD4GWzFKQ-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglOBM7VfIJJnaQkkDbAH2c9Y-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglFOLb3EZUkWADq_wPaf9pKE-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglAcWCCJha4xWoGH_dTSO2Uc-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglAv7AcJs_S7Vk6PCravwmn0-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglAxwepRynqc1TmMY2t4UyBI-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglAxoEXH6R_Vu6lma8Xr1oXA-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglL01BNQjP2LOfdw*zQMJyvQ-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglAUMjwuK5ZTcB*0INzv3ujI-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglI1Zhfzno7qRRnFRaP1WCXY-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglN*zYhaySl1B8DA_MIsBfbk-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglOKhprnKJJ8vUdZidRCL96A-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglObAE84Hrdsd9*xpet0KZto-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglDkdPysjYGKUZAKPHnCvEss-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglNgwvLA4O8oewpS0QyIHoHk-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglKxOx8dzlr0PeuX6EBDX0CI-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglKJ5kXgcxLexcLbb_znNrZ8-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglIcgj_mdTkp3_IlpMdrmJHc-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglPuysWZNlcfkWUP5zJToLAc-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglGEFms55Dk7fXA2wWg4NxJ4-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglAdxKkPu3_4ou4X2bJtTtV4-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglPtxYeDsu_iRf3AYPv8gxQE-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglPz1C_5XgINIp3TnLUIUUeA-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglGyAfJJmiDAfmZOEuFzFNA0-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglGUmAh5sc589C8mZxhcOWdA-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglIVjR8BS731ZgWpuQHeZzmw-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglJHSLEtxAK3zM8sA4bMaRLM-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglCygZnleyMFc2NtARTOzj*s-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglGdIQaq7L5A_Vrr3yr4NppM-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglAVAnBmrI3oZZxkhuY4zRl0-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglE6UWotmUQRnKCjAIexiiEY-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglAJP*VbuXE2pRyMkVlLQH34-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglIpNZ63tc1HF15gWHCtY7u8-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglKiXGIUv*VU0_4wOERFuDEg-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglMfwseWBEwx1PMbAiH*KzRs-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglHwVFU*a1*yUETtWE9HD7jQ-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglGF4PaMBRbP5Vk4BIF3dgBQ-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglJOu333WmuopQh2w9o_dykQ-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglC7bRk0yz19A6VidW056IGA-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglGmqFGDQz_YoxgYtUieshyU-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglJnZIVBaW1t1qwt4oCDTCYw-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglBTifyQXsSwl_wtxz48zdiM-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglIfbrh6wGT0gFP53HkVaTaY-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglNZYDOtjDm7MIn0TleO6C1w-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglNGqsp7mb9Z2cgZ3qx4i3EU-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglHm8_xvCynRVtu8K865TqPw-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglNc9*bOfEBHruTUrvTUQzlo-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglL60hZ7JRvOVKp*ilfdyqS0-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglOUrv7Y35ePcC_RfswDRYfM-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglD5flGW18tb0US08FzFA418-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglANwg84xlEnwPtXDMguLI_s-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglMX7gFe4EjkeHfZF1992zB4-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglKwKGk5eUrMywiK9ltL78Oc-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglCFLSwuTjrMmZYErtsfstbs-&tp=",
+        "https://document.ketangpai.com/img?img=EnvigofzSy0FCt8SIvdHWg6TDMZ3cYRPaNcWtRuwbIVvcYmRZ4YglJOTGLPKUeqwjCliDxIP8rI-&tp="
+    ]
+
+
+
+
+    // function download(src,index) {
+    //     let $a = document.createElement('a');
+    //     $a.setAttribute("href", src);
+    //     $a.setAttribute("download", `layer${index}.png`);
+    //
+    //     let evObj = document.createEvent('MouseEvents');
+    //     evObj.initMouseEvent( 'click', true, true, window, 0, 0, 0, 0, 0, false, false, true, false, 0, null);
+    //     $a.dispatchEvent(evObj);
+    // }
+    //
+    // res.map((item,index) => {
+    //     download(item,index)
+    // })
+
+
+    for (let i = 0; i < res.length; i++) {
+        const img = document.createElement("img");
+        img.src = res[i];
+        // img.style = "position: absolute; width: 1760px; height: 2489px;"
+        // img.download = ""
+        // down.innerHTML = `layer-${i}.png`
+        document.body.appendChild(img);
+    }
+</script>
+</body>
+</html>
