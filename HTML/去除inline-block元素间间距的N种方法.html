@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>去除Inline-block间隙</title>
+    <style>
+        .space a {
+            display: inline-block;
+            padding: .5em 1em;
+            background-color: #cad5eb;
+        }
+    </style>
+</head>
+<body>
+    <label>
+    <!--    这两者之间会产生间隙-->
+        <input type="text">
+        <input type="submit" />
+    </label>
+
+    <div class="space">
+        <a href="##">惆怅</a>
+        <a href="##">淡定</a>
+        <a href="##">热血</a>
+    </div>
+</body>
+</html>
