@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时器this指向</title>
+</head>
+<body>
+<script>
+    let obj={
+        a:222,
+
+        fn: function() {
+            setTimeout(function(){console.log('fn', this)})
+        },
+
+        fn0: function() {
+            console.log('fn0', this);
+        },
+
+        fn1: () => {
+            console.log('fn1', this);
+        },
+
+        fn2: function() {
+            setTimeout(() => {console.log('fn2', this, this.a)})
+        }
+    };
+
+    obj.fn(); // window
+    obj.fn0();// {a: 222, fn: ƒ, fn0: ƒ, fn1: ƒ, fn2: ƒ}
+    obj.fn1();// window
+    obj.fn2();// {a: 222, fn: ƒ, fn0: ƒ, fn1: ƒ, fn2: ƒ}
+</script>
+</body>
+</html>

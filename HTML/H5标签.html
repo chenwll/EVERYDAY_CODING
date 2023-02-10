@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>H5标签</title>
+    <style>
+        div > span {
+            color: red;
+        }
+    </style>
 </head>
 <body>
   <div>div</div>
@@ -14,5 +19,11 @@
 <section>section</section>
 <article>article</article>
   <input type="text"> <input type="text">
+
+<!--<span><div>行内元素不能放块级元素</div></span>-->
+<!--<p><div>p标签里面只能放文本属性</div></p>-->
+
+
+<div><p><span>子代选择器</span></p></div>
 </body>
 </html>

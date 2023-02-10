@@ -5,7 +5,7 @@ function throttle1(fn ,time) {
     return function (...args) {
         let t2 = new Date();
         if(t2 - t1 > time){
-            fn.apply(args);
+            fn.apply(this,args);
             t1 = t2;
         }
     }

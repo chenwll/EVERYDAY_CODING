@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>arguments</title>
+</head>
+<body>
+<script>
+    // arguments的长度是根据传入的参数决定的，而非定义函数时的参数个数
+  function logArg(num1, num2) {
+    arguments[1] = 10;
+    console.log(num2,'undefined')
+  }
+  logArg(1)
+</script>
+</body>
+</html>

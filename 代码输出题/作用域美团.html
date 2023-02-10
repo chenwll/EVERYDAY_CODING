@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作用域-美团</title>
+</head>
+<body>
+<script>
+  var name = 'name';
+  var A = {
+    name: 'A',
+    sayHello: function() {
+      let s = () => console.log(this.name);
+      // let s=function(){
+      //   console.log(this.name)
+      // }
+      return s;
+    }
+  };
+  let sayHello = A.sayHello();
+  sayHello();
+  var B = {
+    name: 'B'
+  };
+  sayHello.call(B)
+</script>
+</body>
+</html>
