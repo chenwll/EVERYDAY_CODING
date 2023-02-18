@@ -6,9 +6,9 @@ const myFlat = function (arr ,depth = 1) {
 }
 
 // 不指定层级版本
-const flat = function (arr) {
+const flat = (arr) => {
     return arr.reduce((acc,cur) => {
-        return acc.concat(Array.isArray(cur) ? flat(cur): cur);
+        return acc.concat(Array.isArray(cur) ? flat(cur) : cur);
     },[])
 }
 

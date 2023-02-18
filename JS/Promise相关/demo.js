@@ -1,26 +1,24 @@
-function fn(){
-    console.log('two')
+const delay = (time) => {
+    console.log('delay')
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve()
+        },time)
+    })
 }
 
-setTimeout(function () {
-    console.log('three');
-}, 0);
+function *gen() {
+    console.log('res')
+    let res = yield delay()
 
-Promise.resolve().then(() => fn());
-// let p = Promise.resolve().then(fn);
-// p 是一个Promise
-
-console.log('one');
-
-
-const set = new Set([1,2,3,4,5])
-for(let [key,value] of set.entries()) {
-    console.log(key,value)
 }
+var g = gen();
+// var result = g.next();
 
-// 如果参数是 Promise 实例，那么Promise.resolve将不做任何修改、原封不动地返回这个实例。
-Promise.resolve(Promise.reject('123')).then((data)=>{
-    console.log(data)
-}).catch((data)=>{
-    console.log('err',data)
-})
+// console.log(result)
+
+
+
+
+
+

@@ -1,3 +1,6 @@
+// 生成器函数执行，返回一个可以迭代的对象
+// 通过调用next方法，返回done和value,如果done是true的话直接return,否则通过value.next方法递归调用
+// https://github.com/mqyqingfeng/Blog/issues/99
 const delay = function (time) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -17,11 +20,14 @@ const handle = function * () {
     console.log('第三个请求完成', value);
 }
 
+// 写一个自动执行函数
 const AsyncFun = function (generator, ...params) {
     let itor = generator(...params);
     const next = x => {
         let {done, value} = itor.next(x);
-        if(done) return;
+        if(done) {
+            return;
+        }
         if(!(value instanceof  Promise)) value = Promise.resolve(value);
         value.then(next);
     }
