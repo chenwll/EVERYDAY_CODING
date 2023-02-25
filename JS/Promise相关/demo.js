@@ -1,24 +1,10 @@
-const delay = (time) => {
-    console.log('delay')
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve()
-        },time)
-    })
+let a = () => {
+    console.log('a')
 }
 
-function *gen() {
-    console.log('res')
-    let res = yield delay()
-
+let b = () => {
+    console.log(b)
 }
-var g = gen();
-// var result = g.next();
 
-// console.log(result)
-
-
-
-
-
-
+b = a;
+b() //a

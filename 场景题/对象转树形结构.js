@@ -17,19 +17,18 @@ const arr = [
 ];
 
 function arrToTree(arr, id) {
-    function dfs(id) {
-        // 数组里面最后只会有一个元素，所以数组放在递归函数里面
-        let res = [];
+    const dfs = (id) => {
+        let ans = [];
         for(let item of arr) {
-           const {id:me, pid: father} = item;
-           if(id === father) {
-               item.children = dfs(me);
-               res.push(item);
-           }
+            const {id:me, pid: father} = item;
+            if(id === father) {
+                item.children = dfs(me);
+                ans.push(item);
+            }
         }
-        return res;
+        return ans;
     }
-    return dfs(id)
+    return dfs(id);
 }
 
 let x = arrToTree(arr,"")

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三饼</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 66px;
+        height: 74px;
+        justify-content: space-between;
+        background-color: #cccccc;
+        border-radius: 5px;
+    }
+    li {
+
+        list-style: none;
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        border-radius: 50%;
+    }
+    li:nth-child(2) {
+        align-self: center;
+    }
+    li:nth-child(3) {
+        align-self: end;
+    }
+</style>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>

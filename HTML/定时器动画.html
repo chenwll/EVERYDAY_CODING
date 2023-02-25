@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时器动画</title>
+</head>
+<style>
+    .img {
+        width: 200px;
+        height: 200px;
+        background-color: gray;
+        margin-bottom: 20px;
+    }
+    .pic {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+</style>
+<body>
+    <img
+            src = "https://tse2-mm.cn.bing.net/th/id/OIP.CRYz5Bv4vylsMh83G4CsLgHaFj?pid=Api&rs=1"
+            class="pic"
+            alt="加载中"
+    />
+
+    <script>
+        let pic = document.querySelector('.pic'),
+            // target目标位置
+            target = document.documentElement.clientWidth - pic.offsetWidth,
+            // begin起始位置
+            begin = parseFloat(window.getComputedStyle(pic).left),
+            // change总距离
+            change = target - begin,
+            // duration总时间
+            duration = 1000,
+            // time已经运动的时间
+            time = 0;
+        // let timer = setInterval(() => {
+        //     time += 17;
+        //     if(time >= duration) {
+        //         pic.style.left = target + 'px';
+        //         clearInterval(timer);
+        //         timer = null;
+        //         return;
+        //     }
+        //     let curl = time / duration * change + begin;
+        //     pic.style.left = curl + 'px'
+        // },17)
+
+        // requestAnimationFrame
+        function render() {
+            time += 17;
+            if(time >= duration) {
+                pic.style.left = target + 'px';
+                return;
+            }
+            let curl = time / duration * change + begin;
+            pic.style.left = curl + 'px'
+            window.requestAnimationFrame(render);
+        }
+        window.requestAnimationFrame(render)
+    </script>
+</body>
+</html>

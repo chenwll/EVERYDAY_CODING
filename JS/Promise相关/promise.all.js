@@ -3,7 +3,6 @@
  * @param _promises
  * @returns {Promise<unknown>}
  */
-
 function promiseAll(_promises) {
     return new Promise((resolve, reject) => {
         let res = [];

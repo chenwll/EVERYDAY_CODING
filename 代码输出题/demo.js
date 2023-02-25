@@ -1,12 +1,8 @@
-function createCounter() {
-    var count = 0;
-    return function() {
-        count++;
-        console.log(count);
-    };
+try{
+    setTimeout(() => {
+        console.log('setTimeout')
+    },500)
+}finally {
+    console.log('finally')
 }
 
-const counter = createCounter();
-counter(); // 输出1
-counter(); // 输出2
-counter(); // 输出3

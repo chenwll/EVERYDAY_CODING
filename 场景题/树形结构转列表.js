@@ -13,6 +13,11 @@ let tree = [
                         id: 3,
                         text: '节点1_1_1',
                         parentId: 2,
+                    },
+                    {
+                        id: 4,
+                        text: '节点1_1_2',
+                        parentId: 2,
                     }
                 ]
             }
@@ -20,18 +25,18 @@ let tree = [
     }
 ]
 
-function treeToArr(data) {
-    let ans = [];
-    const dfs = (data) => {
-        data.forEach((item) => {
+function treeToArr(arr) {
+    const ans = []
+    const dfs = (arr) => {
+        for(let item of arr) {
             if(item.children) {
                 dfs(item.children);
                 delete item.children;
             }
             ans.push(item);
-        })
+        }
     }
-    dfs(data);
+    dfs(arr);
     return ans;
 }
 
