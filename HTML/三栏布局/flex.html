@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex实现三栏</title>
+</head>
+<style>
+    .wrapper {
+        display: flex;
+    }
+    .main{
+        background-color: red;
+        flex: 1;
+    }
+    .left{
+        /*默认100px大小*/
+        flex:0 1 100px;
+        background-color: blue;
+        order: -1;
+    }
+    .right {
+        /*默认100px*/
+        flex:0 1 100px;
+        background-color: green;
+        order: 1;
+    }
+</style>
+<body>
+<div class="wrapper">
+    <div class="main">这是中间</div>
+    <div class="left">这是左侧</div>
+    <div class="right">这是右侧</div>
+</div>
+</body>
+</html>

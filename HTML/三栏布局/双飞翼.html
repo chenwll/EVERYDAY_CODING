@@ -2,40 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>双飞翼</title>
     <style>
-            .main {
-                width: 100%;
-                height: 50vh;
-                background-color: red;
-                float: left;
-            }
-            .l {
-                width: 200px;
-                height: 50vh;
-                background-color: aqua;
-                float: left;
-                margin-left: -100%;
-            }
-            .content {
-                margin: 0 200px;
-            }
-            .r {
-                width: 200px;
-                height: 50vh;
-                background-color: aquamarine;
-                float: left;
-                margin-left: -200px;
-            }
+        .container > div {
+            float: left;
+        }
+        .left {
+            margin-left: -100%;
+            width: 200px;
+            height: 300px;
+            background: red;
+        }
+        .main {
+            width: 100%;
+            background: blue;
+            height: 300px;
+        }
+        .right {
+            margin-left: -200px;
+            width: 200px;
+            height: 300px;
+            background: yellow;
+        }
+        .main-warpper {
+            padding: 0 200px;
+        }
+
     </style>
 </head>
 <body>
-  <div>
-    <div class="main">
-      <div class="content">中</div>
+<div class="container">
+    <div class="main-warpper">
+        <div class="main">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi asperiores assumenda, at autem consequatur cum eaque, eius est eveniet fugit id itaque necessitatibus perferendis perspiciatis quia, ratione sint temporibus voluptatum?</div>
     </div>
-      <div class="l">左</div>
-      <div class="r">右</div>
-  </div>
+    <div class="left">左边固定宽度</div>
+    <div class="right">右边固定宽度</div>
+</div>
 </body>
 </html>
