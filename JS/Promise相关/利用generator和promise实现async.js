@@ -20,6 +20,10 @@ const handle = function * () {
     console.log('第三个请求完成', value);
 }
 
+// 先第一次执行，得到一个迭代器对象
+// 然后通过next方法继续调用，并返回结果{done,value}
+// 如果done为true，直接结果，否则递归调用next方法
+
 // 写一个自动执行函数
 const AsyncFun = function (generator, ...params) {
     let itor = generator(...params);

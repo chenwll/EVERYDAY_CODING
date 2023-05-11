@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据响应</title>
+</head>
+<body>
+    <input type="text" id="model" />
+    <div id="modelText"></div>
+</body>
+<script>
+    var user = {};
+    var defaultName = "狂奔的蜗牛";
+    var model = document.querySelector("#model");
+    var modelText = document.querySelector("#modelText");
+
+    model.value = defaultName;
+    modelText.innerHTML = defaultName;
+
+    //定义属性 监控改变
+    Object.defineProperty(user,"name",{
+        get:function(){
+            console.log("你是不是来获取值啦");
+            return defaultName;
+        },
+        set:function(newValue){
+            console.log("设置新值");
+            defaultName = newValue;
+            model.value = newValue;
+            modelText.innerHTML = newValue;
+        }
+    })
+
+    model.addEventListener("keyup", function () {
+        user.name = this.value;
+        console.log("实现 视图 => 模型");
+    }, false)
+</script>
+</html>

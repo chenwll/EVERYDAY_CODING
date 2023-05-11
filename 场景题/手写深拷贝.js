@@ -32,10 +32,12 @@ function deepCopy(originValue) {
         return new RegExp(originValue)
     }
 
+    // 时间类型
     if(originValue instanceof Date) {
         return new Date(originValue)
     }
-    //如果是set类型
+
+    // 如果是set类型
     if(originValue instanceof Set) {
         const newSet = new Set()
         for(const setItem of originValue) {
@@ -44,7 +46,7 @@ function deepCopy(originValue) {
         return newSet
     }
 
-    //如果是函数function类型,不需要进行深拷贝
+    // 如果是函数function类型,不需要进行深拷贝
     if(typeof originValue === 'function') {
         return originValue
     }
@@ -60,6 +62,7 @@ function deepCopy(originValue) {
     for(const symbolKey of symbolKeys) {
         newObj[Symbol(symbolKey.description)] = deepCopy(originValue[symbolKey])
     }
+
     return newObj
 }
 
@@ -73,8 +76,9 @@ const info = {
         },
         reg: /^[aeiou]/g
     },
+    // person:info
 }
-// info.person = info;
+info.person = info;
 
 const dObj = deepCopy(info)
 

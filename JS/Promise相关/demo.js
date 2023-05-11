@@ -1,9 +1,17 @@
-function myFlat(arr, depth) {
-    if(depth === 0) return arr.slice();
-    return arr.reduce((acc,cur) => {
-        return acc.concat(Array.isArray(cur) ? myFlat(cur, depth - 1) : cur);
-    },[])
+function Add() {
+    const nums = [...arguments];
+    function sum() {
+        nums.push(...arguments);
+        return sum;
+    }
+    sum.total = () => {
+        return nums.reduce((acc,cur) => {
+            return acc + cur;
+        },0)
+    }
+    return sum
 }
 
-let x = myFlat([1, 2, 3, [4, [5, 6]]],1)
+let x = Add(1,2,3)(4,5)(5)(6,4,10).total()
 console.log(x)
+

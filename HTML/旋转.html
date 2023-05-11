@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旋转动画</title>
+    <style>
+        /* 镜框 */
+        .clock-frame {
+            /* 外观 */
+            height: 200px;
+            width: 200px;
+            background-color: rebeccapurple;
+            border-radius: 100px;
+
+            /* 定位 */
+            position: relative;
+        }
+
+        /* 秒针 */
+        .second-hand {
+            /* 外观 */
+            height: 100px;
+            width: 2px;
+            background-color: pink;
+
+            /* 定位 */
+            position: absolute;
+            left: 50%;
+
+            /* 旋转相关 */
+            transform-origin: 100px 100px;
+            transform-origin: bottom left;
+            /* 已左下角为中心旋转 */
+            /*animation-duration: 3s; !* 动画时间 *!*/
+            /*animation-name: rotateSecondHand; !* 关键帧名字 *!*/
+            /*animation-timing-function: linear; !* 动画时间函数 *!*/
+            /*animation-iteration-count: infinite; !* 让动画永远执行下去 *!*/
+            animation: 3s linear infinite rotateSecondHand;
+            /*上面的可以写成那么一句，但是如果各个参数的位置忘了怎么写的话*/
+            /*可以分开写 *!*/
+        }
+
+        @keyframes rotateSecondHand {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="clock-frame">
+        <div class="second-hand"></div>
+    </div>
+</body>
+</html>

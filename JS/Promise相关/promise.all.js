@@ -21,14 +21,30 @@ function promiseAll(_promises) {
     })
 }
 
+// Promise.all = function (iterator) {
+//     return new Promise((resolve, reject) => {
+//         let cnt = 0;
+//         let res = [];
+//         for(let i = 0; i < iterator.length; i++) {
+//             Promise.resolve(iterator[i]).then((data) => {
+//                 res[i] = data;
+//                 if(++cnt === iterator.length) resolve(res)
+//             },(err) => {
+//                 reject(err)
+//             })
+//         }
+//     })
+// }
+
 Promise.all = function (iterator) {
-    return new Promise((resolve, reject) => {
-        let cnt = 0;
-        let res = [];
+    return new Promise((resolve,reject) => {
+        let cnt = 0, res = [];
         for(let i = 0; i < iterator.length; i++) {
             Promise.resolve(iterator[i]).then((data) => {
-                res[i] = data;
-                if(++cnt === iterator.length) resolve(res)
+                ans[i] = data;
+                if(++cnt === iterator.length) {
+                    resolve(res)
+                }
             },(err) => {
                 reject(err)
             })

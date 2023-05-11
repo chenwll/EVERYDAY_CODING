@@ -1,5 +1,7 @@
 const add1 = (x) => x + 1100;
-const add10 = (x) => x + 10;
+const add10 = (x) => {
+    return x + 10;
+};
 const mul10 = (x) => x * 10;
 const add100 = (x) => x + 100;
 
@@ -33,13 +35,12 @@ function compose2(...args) {
 
 // 写法三，reduce
 function compose3(...args) {
-    return args.reduceRight((acc,cur) => {
+    return args.reduce((acc,cur) => {
         return function (x){
             return cur(acc(x))
         }
     })
 }
 
-
-let x = compose3(add1,add10, mul10, add100)(10);
+let x = compose3(add10, mul10,add100)(10);
 console.log(x);

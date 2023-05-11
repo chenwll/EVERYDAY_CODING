@@ -16,19 +16,19 @@ const arr = [
     { id: "15", name: "小涛", pid: "06", job: "运维工程师" },
 ];
 
-function arrToTree(arr, id) {
-    const dfs = (id) => {
-        let ans = [];
+function arrToTree(arr,pid) {
+    const dfs = (pid) => {
+        const res = [];
         for(let item of arr) {
-            const {id:me, pid: father} = item;
-            if(id === father) {
-                item.children = dfs(me);
-                ans.push(item);
+            const {pid:father,id} = item;
+            if(pid === father) {
+                item.children = dfs(id);
+                res.push(item);
             }
         }
-        return ans;
+        return res;
     }
-    return dfs(id);
+    return dfs(pid)
 }
 
 let x = arrToTree(arr,"")

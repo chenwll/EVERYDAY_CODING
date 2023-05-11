@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>子元素是父元素宽度一半</title>
+</head>
+<style>
+    .parent {
+        position: relative; /* 父元素需要设置position属性，以便子元素使用相对定位 */
+        width: 50%; /* 父元素宽度不固定，可以使用百分比单位 */
+        background-color: #ccc;
+    }
+
+    .child {
+        position: absolute; /* 子元素需要设置绝对定位 */
+        top: 0;
+        left: 0;
+        width: 50%; /* 子元素宽度为父元素宽度的一半 */
+        height: 100%;
+        background-color: #f00;
+    }
+
+
+</style>
+<body>
+  <div class="parent">
+    <div class="child">
+    </div>
+  </div>
+</body>
+</html>

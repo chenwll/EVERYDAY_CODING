@@ -3,7 +3,7 @@ const mul10 = (x) => x * 10;
 const add100 = (x) => x + 100;
 
 // (10 + 100) * 10 + 10 = 1110
-compose(add10, mul10, add100)(10);
+// compose(add10, mul10, add100)(10);
 
 // 目标
 // add100(mul10(add10(10)))
@@ -39,18 +39,18 @@ compose(add10, mul10, add100)(10);
 // }
 
 // 将迭代改写成reducer
-function compose(...funs){
-    if(funs.length === 0){
-        return arg => arg
-    }
-
-    if(funs.length === 1){
-        return funs[0]
-    }
-    return funs.reduceRight((a,b) => (...args)=>{
-        return b(a(...args))
-    })
-}
+// function compose(...funs){
+//     if(funs.length === 0){
+//         return arg => arg
+//     }
+//
+//     if(funs.length === 1){
+//         return funs[0]
+//     }
+//     return funs.reduceRight((a,b) => (...args)=>{
+//         return b(a(...args))
+//     })
+// }
 
 
 // const compose = (...fns) =>
@@ -60,6 +60,28 @@ function compose(...funs){
 //       (...args) =>
 //         f(g(...args))
 //   );
+
+// compose写法
+// const compose = (...func) => {
+//     return func.reduce((acc,cur) => (x) => {
+//         return cur(acc(x))
+//     })
+// }
+
+// 递归写法
+const compose = (...func) => {
+    let len = func.length - 1;
+    function callback(fn1, fn2) {
+        return (x) => {
+            return fn1(fn2(x))
+        }
+    }
+    let fn = func[len];
+    for(let i = len - 1; i >= 0; i--){
+        fn = callback(fn,func[i]);
+    }
+    return fn;
+}
 
 
 

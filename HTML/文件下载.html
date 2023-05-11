@@ -18,16 +18,16 @@
             console.log(fileUrl)
             const ele = document.createElement('a')
             ele.setAttribute('href',fileUrl)
-            ele.setAttribute('download',"")
+            ele.setAttribute('download','a.docx')
             ele.click()
             ele.innerHTML = '下载'
             document.body.appendChild(ele)
         }
     }
-    download("https://www.ketangpai.com/images/common/logo_blue.png"  )
+    download('http://47.92.112.6:9000/myciv/0978870e4ce14d8ea8d9cf52b72c09df.docx?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=smlminio%2F20230416%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230416T095827Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=3c137ab42676dddc73494232165e5b1ee15e51cc40cb19129e3084d993be12bf')
 </script>
 <a href="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bb72413461364175af5edf2a1fae4446~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp?" download="">可以跨域下载的链接</a>
 <a href="https://www.ketangpai.com/images/common/logo_blue.png" download="a7995ad.svg">不可以跨域下载的链接，只能预览</a>
-
+<img src="http://47.92.112.6:9000/myciv/9c034169328c4298acbf241749186845.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=smlminio%2F20230326%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230326T110832Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=25e32248bbe32376043c5e7f55cc1ab36a2faf7a097c041d780939d445092f36" />
 </body>
 </html>

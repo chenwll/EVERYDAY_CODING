@@ -7,14 +7,16 @@ const testArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 function getRandom(min, max) {
     return Math.floor(Math.random()*(max - min + 1) + min)
 }
-function getNum(arr ,n) {
-    let ans = [];
-    for(let i = 0; i < n; i++) {
-        let index = getRandom(0,arr.length - i - 1);
-        ans.push(arr[index]);
-        arr[index] = arr[arr.length - i - 1]
-    }
-    return ans;
-}
+
+// function getNum(arr ,n) {
+//     let ans = [];
+//     for(let i = 0; i < n; i++) {
+//         let index = getRandom(0,arr.length - i - 1);
+//         ans.push(arr[index]);
+//         arr[index] = arr[arr.length - i - 1]
+//     }
+//     return ans;
+// }
+
 
 console.log(getNum(testArray,14))

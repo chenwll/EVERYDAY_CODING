@@ -2,15 +2,25 @@
 
 // 小数部分会进行丢弃 8^0.5 = 2.8…… => 2
 
+// function power(num) {
+//     let l = 0, r = num;
+//     while(l < r){
+//         // 右移运算会自动向下取整
+//         let mid = l + r + 1 >> 1;
+//         if(mid*mid <= num) l = mid;
+//         else r = mid - 1;
+//     }
+//     return l;
+// }
+
 function power(num) {
     let l = 0, r = num;
-    while(l < r){
-        // 右移运算会自动向下取整
-        let mid = l + r + 1 >> 1;
-        if(mid*mid <= num) l = mid;
-        else r = mid - 1;
+    while(l < r) {
+        let mid = l + r >> 1;
+        if(mid*mid > num) r = mid;
+        else l = mid + 1;
     }
-    return l;
+    return l
 }
 
 // 小数部分会进位 8^0.5 = 2.8…… => 3
@@ -25,8 +35,8 @@ function power(num) {
 //     return l;
 // }
 //
-// let res = power(8);
-// console.log(res)
+let res = power(8);
+console.log(res)
 
 
 

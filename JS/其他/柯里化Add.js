@@ -46,17 +46,17 @@
 // }
 
 // 改进版
-function Add() {
-    const nums = [...arguments];
-    function AddFn() {
-        nums.push(...arguments);
-        return AddFn
-    }
-    AddFn.sum = function () {
-        return nums.reduce((acc,cur) => acc + cur)
-    }
-    return AddFn;
-}
+// function Add() {
+//     const nums = [...arguments];
+//     function AddFn() {
+//         nums.push(...arguments);
+//         return AddFn
+//     }
+//     AddFn.sum = function () {
+//         return nums.reduce((acc,cur) => acc + cur)
+//     }
+//     return AddFn;
+// }
 
 // 如果使用的是箭头函数的话，arguments是父作用域的arguments，所以是3*(1+2+3)
 function Add() {
