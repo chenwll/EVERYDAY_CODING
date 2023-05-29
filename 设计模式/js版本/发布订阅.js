@@ -36,6 +36,7 @@ class EventEmitter {
     once(name,cb) {
         // 新创建一个函数，函数执行包括 cb执行和解除绑定
         const fn = (...args) => {
+            console.log(args,'ff');
             cb.apply(this,args)
             this.off(name,fn);
         }
@@ -57,7 +58,7 @@ const fn = (...args) => {
 o.on('post',fn);
 o.off('post',fn)
 o.once('post2',fn);
-o.emit('post2','cwl')
+o.emit('post2','cwl',{name:'cwl'})
 o.emit('post2')
 // o.emit('post',1, {name:'cwl'})
 
