@@ -8,7 +8,8 @@ class EventEmitter {
     on(name,cb) {
         let eventArr = this.event[name] || [];
         eventArr.push(cb);
-        // this.event[name] = eventArr;
+        this.event[name] = eventArr;
+        console.log(this.event[name]);
     }
 
     //取消事件
@@ -18,7 +19,6 @@ class EventEmitter {
             let index = eventArr.findIndex((item) => item === cb);
             eventArr.splice(index,1)
         }
-
     }
 
     // 派发执行
@@ -43,37 +43,21 @@ class EventEmitter {
     }
 }
 
+// 结对编程第一步，先写测试用例
 
-class Event {
-    constructor() {
-        this.event = {}
-    }
+const o = new EventEmitter();
+o.on('post', (...args)=>{
+    console.log(args, 1);
+})
 
-    on(name,cb) {
-        const arr = this.event[name];
-        arr.push(cb);
-        this.event[name] = arr;
-    }
-
-    off(name,cb) {
-        const arr = this.event[name];
-        const index = arr.find((item) => item === cb)
-        arr.splice(index,1);
-    }
-
-    emit(name) {
-        const arr = this.event[name];
-        for(let item of arr) {
-            item()
-        }
-    }
-
-    once(name, cb) {
-        const fn = () => {
-            cb();
-            this.off(name,fn);
-        }
-        this.on(name,fn)
-    }
-
+const fn = (...args) => {
+    console.log(args,2);
 }
+
+o.on('post',fn);
+o.off('post',fn)
+o.once('post2',fn);
+o.emit('post2','cwl')
+o.emit('post2')
+// o.emit('post',1, {name:'cwl'})
+
