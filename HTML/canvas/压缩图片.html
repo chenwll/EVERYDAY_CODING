@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="file" id="file">
+    <script>
+        let base64Url = '';
+        let dom = null;
+        function fileUpload(e) {
+            const file = e.target.files[0];
+            console.log('file',file);
+            const fr = new FileReader();
+            
+            // 将file/blob转化成base64格式
+            fr.readAsDataURL(file);
+            fr.addEventListener('load',function () {
+                base64Url = fr.result;
+                const img = document.createElement('img');
+                img.src = base64Url;
+                document.body.append(img);
+                
+                // let cvs = document.createElement('canvas');
+                // cvs.width = 
+            })
+        }
+        const input = document.getElementById('file');
+        input.addEventListener('change',fileUpload)
+    </script>
+</body>
+</html>

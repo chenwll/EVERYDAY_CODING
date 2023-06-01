@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>裁剪图片</title>
+</head>
+<body>
+    <img src="./img.jpg" alt="" id="img">
+    <canvas id="canvas" width="350" height="200"></canvas>
+    <script>
+        const cvs = document.getElementById('canvas');
+        const ctx = cvs.getContext("2d");
+        const img = document.getElementById('img');
+        ctx.drawImage(img,0,0,350,200,0,0,350,200);
+    </script>
+</body>
+</html>
