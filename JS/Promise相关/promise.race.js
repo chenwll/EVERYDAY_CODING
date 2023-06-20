@@ -46,3 +46,14 @@ Promise.race = function (iterators) {
         }
     });
 };
+
+
+Promise.race = function (iterators) {
+    return new Promise((resolve,reject) => {
+        for(let item of iterators) {
+            Promise.resolve(item).then((data) => resolve(data)).catch((err) => {
+                reject(err);
+            })
+        }
+    })
+}

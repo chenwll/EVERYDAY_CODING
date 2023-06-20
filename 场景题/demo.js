@@ -1,53 +1,13 @@
-class EventEmitter {
-    constructor() {
-        this.event = {};
+function outer() { // outer函数内部为闭包函数提供一个闭包作用域(outer)
+    let bar = "bar";
+    let unused = function() {
+        console.log(bar); // 再创建一个闭包函数，并在其中使用外部函数中的变量
     }
-
-    on(name,cb) {
-        const arr = this.event[name] || [];
-        arr.push(cb);
-        this.event[name] = arr;
+    let inner = function() {
+        // console.log(bar); // 注释该行，内部inner函数不再使用外部outer函数中的变量
+        debugger;
+        console.log("inner function run.");
     }
-
-    off(name,cb) {
-        const arr = this.event[name];
-        if(cb&&arr) {
-            const index = arr.findIndex((item) => item === cb);
-            arr.splice(index,1);
-        }else {
-            console.log('error');
-        }
-    }
-
-    emit(name,...rest) {
-        const arr = this.event[name];
-        if(arr){
-            arr.forEach(element => {
-               element.apply(this,rest); 
-            });
-        }
-    }
-
-    once(name,cb) {
-        const fn = (...args) => {
-            cb.apply(this,args);
-            this.off(name,fn);
-        }   
-        this.on(name,fn)
-    }
+    inner(); // 直接在外部函数中执行闭包函数inner
 }
-
-const o = new EventEmitter();
-o.on('post', (...args)=>{
-    console.log(args, 1);
-})
-
-const fn = (...args) => {
-    console.log(args,2);
-}
-
-o.on('post',fn);
-o.off('post',fn)
-o.once('post2',fn);
-o.emit('post2','cwl',{name:'cwl'})
-o.emit('post2')
+outer();

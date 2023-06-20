@@ -7,12 +7,14 @@
 // es7的实现
 async function asyncPool(poolLimit, array, iteratorFn) {
     const ret  = [];
+    // 存储正在执行的异步任务
     const executing = [];
     for(let item of array) {
         // () => iteratorFn(item) 为了传递参数
         let p = Promise.resolve().then(()=>iteratorFn(item));
         // 存储所有的异步任务
         ret.push(p)
+        // 超出了限制
         if(array.length >= poolLimit) {
             const e = p.then(() => executing.splice(executing.indexOf(e), 1));
             executing.push(e);
@@ -37,26 +39,30 @@ function axiosGet(idx) {
         }, 1000 * Math.random());
     });
 }
+
+const timeout = i => new Promise(resolve => setTimeout(() => resolve(i), i));
+asyncPool(2, [1000, 5000, 3000, 2000], timeout);
+
 // async + promise
-async function Process(max = 10) {
-    let pools = [];
-    let result = [];
-    for (let i = 0; i < 100; i++) {
-        let p = axiosGet(i).then((res) => {
-            console.log(res);
-            result.push(res);
-            // 执行完成之后，就可以从pools数组中删除了
-            pools.splice(pools.indexOf(p), 1);
-        });
-        pools.push(p);
-        if (pools.length === max) {
-            await Promise.race(pools);
-        }
-    }
-    // 最后等pools数组中全部执行完成
-    await Promise.allSettled(pools);
-    return result;
-}
-Process().then((res) => {
-    console.log(res);
-});
+// async function Process(max = 10) {
+//     let pools = [];
+//     let result = [];
+//     for (let i = 0; i < 100; i++) {
+//         let p = axiosGet(i).then((res) => {
+//             console.log(res);
+//             result.push(res);
+//             // 执行完成之后，就可以从pools数组中删除了
+//             pools.splice(pools.indexOf(p), 1);
+//         });
+//         pools.push(p);
+//         if (pools.length === max) {
+//             await Promise.race(pools);
+//         }
+//     }
+//     // 最后等pools数组中全部执行完成
+//     await Promise.allSettled(pools);
+//     return result;
+// }
+// Process().then((res) => {
+//     console.log(res);
+// });

@@ -38,14 +38,16 @@ function promiseAll(_promises) {
 
 Promise.all = function (iterator) {
     return new Promise((resolve,reject) => {
-        let cnt = 0, res = [];
+        let cnt = 0;
+        let res = [];
         for(let i = 0; i < iterator.length; i++) {
             Promise.resolve(iterator[i]).then((data) => {
-                ans[i] = data;
-                if(++cnt === iterator.length) {
-                    resolve(res)
+                res[i] = data;
+                cnt++;
+                if(cnt === iterator.length) {
+                    resolve(res);
                 }
-            },(err) => {
+            }).catch((err) => {
                 reject(err)
             })
         }
