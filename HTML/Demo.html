@@ -7,15 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<script>
-
-    function f() {
-        var a = 4;
-    }
-    f()
-    console.log(a)
-
-</script>
 <body>
+<div id="app">
+    <span>
+      <a></a>
+    </span>
+    <span>
+      <a demo="123"></a>
+      <a></a>
+    </span>
+  </div>
+  <script>
+    const node = document.getElementById("app");
+    console.log(node);
+    const res = dom2json(node);
+    console.log(res); // json
+  </script>
 </body>
 </html>

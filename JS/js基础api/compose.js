@@ -24,6 +24,7 @@ function compose1(...args) {
 // 写法二，迭代
 function compose2(...args) {
     let len = args.length - 1;
+    // x表示接受同样的参数
     return function (x) {
         let res = x;
         while(len >= 0) {
@@ -38,6 +39,15 @@ function compose3(...args) {
     return args.reduce((acc,cur) => {
         return function (x){
             return cur(acc(x))
+        }
+    })
+}
+
+
+function compose3(...args) {
+    return args.reduce((pre,cur) => {
+        return function (x) {
+            return cur(pre(x))
         }
     })
 }
