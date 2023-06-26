@@ -1,6 +1,7 @@
 // 生成器函数执行，返回一个可以迭代的对象
 // 通过调用next方法，返回done和value,如果done是true的话直接return,否则通过value.next方法递归调用
 // https://github.com/mqyqingfeng/Blog/issues/99
+
 const delay = function (time) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -8,6 +9,7 @@ const delay = function (time) {
         }, time)
     })
 }
+
 
 const handle = function * () {
     let value = yield delay(1000);
@@ -25,16 +27,31 @@ const handle = function * () {
 // 如果done为true，直接结果，否则递归调用next方法
 
 // 写一个自动执行函数
-const AsyncFun = function (generator, ...params) {
-    let itor = generator(...params);
-    const next = x => {
-        let {done, value} = itor.next(x);
-        if(done) {
-            return;
-        }
-        if(!(value instanceof  Promise)) value = Promise.resolve(value);
-        value.then(next);
+
+const Aysnc = (generator,...params) => {
+    const iterator = generator(...params);
+    const next = (x) => {
+        const {value, done} = iterator.next(x);
+        if(done) return true;
+        if(!(value instanceof Promise)) value = Promise.resolve(value);
+        value.then((data) => {
+            next(data);
+        })
     }
     next()
 }
-AsyncFun(handle)
+
+
+// const AsyncFun = function (generator, ...params) {
+//     let itor = generator(...params);
+//     const next = x => {
+//         let {done, value} = itor.next(x);
+//         if(done) {
+//             return;
+//         }
+//         if(!(value instanceof  Promise)) value = Promise.resolve(value);
+//         value.then(next);
+//     }
+//     next()
+// }
+Aysnc(handle)
