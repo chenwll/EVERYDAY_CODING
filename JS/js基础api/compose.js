@@ -21,6 +21,20 @@ function compose1(...args) {
     }
 }
 
+function compose(...args) {
+    let len = args.length - 1;
+    let res = undefined;
+    return function fn(x) {
+        if(len < 0){
+            return res;
+        }
+        res = args[len--](x);
+        return fn(res)
+    }
+}
+
+
+
 // 写法二，迭代
 function compose2(...args) {
     let len = args.length - 1;
@@ -28,11 +42,25 @@ function compose2(...args) {
     return function (x) {
         let res = x;
         while(len >= 0) {
+            // 函数执行并传参，用res来表示参数
             res = args[len--](res)
         }
         return res;
     }
 }
+
+
+function compose2(args) {
+    return function (x) {
+        let len = args.length - 1;
+        let res = x;
+        while(len >= 0) {
+            res = args[len--](res);
+        }
+        return res;
+    }
+}
+
 
 // 写法三，reduce
 function compose3(...args) {
