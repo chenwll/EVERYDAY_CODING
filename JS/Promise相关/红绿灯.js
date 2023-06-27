@@ -51,7 +51,6 @@ const task = (timer,light) => {
             if(light === 'red') red();
             else if(light === 'green') green();
             else if(light === 'yellow') yellow();
-
             resolve()
         },timer)
     })
@@ -63,4 +62,13 @@ const step = () => {
         .then(() =>task(1000,'yellow') )
         .then(step)
 }
-step()
+// step()
+
+
+const step2 = async () => {
+        await task(3000,'red');
+        await task(2000,'green');
+        await task(1000,'yellow');
+        step2()
+}
+step2()

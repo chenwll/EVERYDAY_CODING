@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--  把上诉虚拟Dom转化成下方真实Dom
+<div id="app">
+  <span>
+    <a></a>
+  </span>
+  <span>
+    <a></a>
+    <a></a>
+  </span>
+</div>
+ -->
+  <script>
+const obj = {
+  tag: 'DIV',
+  attrs:{
+  id:'app'
+  },
+  children: [
+    {
+      tag: 'SPAN',
+      children: [
+        { tag: 'A', children: [], attrs:{key:'uiui'}, },
+        'cwl'
+      ]
+    },
+    {
+      tag: 'SPAN',
+      children: [
+        { tag: 'DIV', children: [] },
+        { tag: 'A', children: [] }
+      ]
+    }
+  ]
+}
+
+const vDomToRDom = (vnode) => {
+  if(typeof vnode === 'string') return document.createTextNode(vnode);
+  const {tag, children, attrs = {}} = vnode;
+  const ele = document.createElement(tag);
+  for(let [key,value] of Object.entries(attrs)) {
+    ele.setAttribute(key,value);
+  }
+  if(Array.isArray(children)) {
+    for(let item of children) {
+      ele.appendChild(vDomToRDom(item));
+    }
+  }
+  return ele;
+}
+
+document.body.appendChild(vDomToRDom(obj))
+  </script>
+</body>
+</html>
