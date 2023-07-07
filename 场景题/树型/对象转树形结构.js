@@ -31,6 +31,7 @@ function arrToTree(arr,pid) {
     return dfs(pid)
 }
 
+
 let x = arrToTree(arr,"")
 console.log(x)
 

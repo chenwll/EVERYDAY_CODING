@@ -25,19 +25,36 @@ let tree = [
     }
 ]
 
-function treeToArr(arr) {
-    const ans = []
+// function treeToArr(arr) {
+//     const ans = []
+//     const dfs = (arr) => {
+//         for(let item of arr) {
+//             if(item.children) {
+//                 dfs(item.children);
+//                 delete item.children;
+//             }
+//             ans.push(item);
+//         }
+//     }
+//     dfs(arr);
+//     return ans;
+// }
+
+const treeToArr = (arr) => {
+    const res = [];
     const dfs = (arr) => {
         for(let item of arr) {
-            if(item.children) {
-                dfs(item.children);
+            const {children} = item;
+            if(Array.isArray(children)) {
+                dfs(children);
                 delete item.children;
             }
-            ans.push(item);
+            res.push(item);
         }
     }
     dfs(arr);
-    return ans;
+    return res;
+
 }
 
 console.log(treeToArr(tree))

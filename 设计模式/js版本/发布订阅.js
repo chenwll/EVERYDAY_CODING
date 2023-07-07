@@ -6,10 +6,11 @@ class EventEmitter {
 
     //绑定事件
     on(name,cb) {
-        let eventArr = this.event[name] || [];
-        eventArr.push(cb);
-        this.event[name] = eventArr;
-        console.log(this.event[name]);
+        if(this.event[name]) {
+            this.event[name].push(cb);
+        }else {
+            this.event[name] = [cb];
+        }
     }
 
     //取消事件
@@ -23,6 +24,7 @@ class EventEmitter {
 
     // 派发执行
     emit(name,...rest) {
+        // 先拿到任务队列
         let eventName = this.event[name];
         if (eventName) {
             eventName.forEach(fn => {
@@ -33,6 +35,7 @@ class EventEmitter {
         }
     }
     // 执行一次
+    // once有on和off的功能, once执行的时候相当于on, emit触发的时候代表on执行, 执行时再off
     once(name,cb) {
         // 新创建一个函数，函数执行包括 cb执行和解除绑定
         const fn = (...args) => {

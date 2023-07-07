@@ -1,9 +1,9 @@
-const myFlat = function (arr ,depth = 1) {
-    if(depth === 0) return arr.slice()
-    return arr.reduce((acc, cur) => {
-        return acc.concat(Array.isArray(cur) ? myFlat(cur, depth - 1) : cur)
-    },[])
-}
+// const myFlat = function (arr ,depth = 1) {
+//     if(depth === 0) return arr.slice()
+//     return arr.reduce((acc, cur) => {
+//         return acc.concat(Array.isArray(cur) ? myFlat(cur, depth - 1) : cur)
+//     },[])
+// }
 
 // 不指定层级版本
 // const flat = (arr) => {
@@ -21,24 +21,19 @@ const myFlat = function (arr ,depth = 1) {
 // console.log(y)
 
 
-const flag = (arr,depth) => {
-    if(depth < 0) return arr;
-    const res = [];
-    function flat(arr,depth) {
-        for(let item of arr) {
-            if(Array.isArray(item)&&depth > 0) {
-                flat(item,depth - 1);
-            }else{
-                res.push(item);
-            }
-        }
+const flat = (arr,depth) => {
+    if(depth === 0) {
+        return arr.slice();
     }
-    flat(arr,depth)
-    return res;
+    return arr.reduce((acc,cur) => {
+        return acc.concat(Array.isArray(cur) ? flat(cur,depth - 1) : cur);
+    },[])
 }
 
 
-const x = flag([1, 2, 3, [4, [5, 6]]],20)
+
+
+const x = flat([1, 2, 3, [4, [5, 6]]],1)
 console.log(x);
 
 

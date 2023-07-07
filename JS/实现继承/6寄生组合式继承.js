@@ -1,4 +1,5 @@
  // 寄生组合继承:这个过程既实现了继承，又没有去调用Super
+ // Super是父类, Sub是子类
  function inheritPrototype(Sub,Super){
     //subPrototype.__proto__=Super.prototype
     var subPrototype=Object.create(Super.prototype)
@@ -9,8 +10,8 @@
     //Sub.prototype.__proto__===Super.prototype
     //Sub.prototype.constructor=Sub
     Sub.prototype=subPrototype
-    
   }
+  
   function Super(name){
     this.name=name
   }

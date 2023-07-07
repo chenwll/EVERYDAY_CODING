@@ -27,22 +27,22 @@ async function asyncPool(poolLimit, array, iteratorFn) {
     return Promise.all(ret)
 }
 
-async function asyncPoll(poolLimit,array,iteratorFn) {
-    const ret = [];
-    const executing = [];
-    for(let item of array) {
-        const p = Promise.resolve.then(() => iteratorFn(item));
-        ret.push(p);
-        if(array.length >= poolLimit) {
-            const e = p.then(() => executing.splice(executing.indexOf(e),1));
-            executing.push(e);
-            if(executing.length >= poolLimit) {
-                await Promise.race(executing);
-            }
-        }
-    }
-    return Promise.all(ret);
-}
+// async function asyncPoll(poolLimit,array,iteratorFn) {
+//     const ret = [];
+//     const executing = [];
+//     for(let item of array) {
+//         const p = Promise.resolve.then(() => iteratorFn(item));
+//         ret.push(p);
+//         if(array.length >= poolLimit) {
+//             const e = p.then(() => executing.splice(executing.indexOf(e),1));
+//             executing.push(e);
+//             if(executing.length >= poolLimit) {
+//                 await Promise.race(executing);
+//             }
+//         }
+//     }
+//     return Promise.all(ret);
+// }
 
 
 
@@ -119,3 +119,20 @@ function asyncPool(poolLimit, array, iteratorFn) {
     return enqueue().then(() => Promise.all(ret));
   }
   
+// 7/4日
+
+async function asyncPool(arr,poolLimit,iteratorFn) {
+  const ret = [];
+  const executing = new Set();
+  for(let item of arr) {
+    const p = Promise.resolve().then(() => iteratorFn(item,arr));
+    ret.push(p);
+    executing.add(p);
+    const clean = () => executing.delete(p);
+    if(executing.size > poolLimit) {
+      await Promise.race(executing);
+    }
+    p.then(clean).catch(clean);
+  }
+  return Promise.all(ret);
+}
