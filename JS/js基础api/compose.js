@@ -34,6 +34,31 @@ function compose(...args) {
 }
 
 
+function composeMy(...args) {
+    let len = args.length - 1;
+    let res;
+    return function fn(x) {
+        if(len < 0) {
+            return res;
+        }else {
+            res = args[len--](x);
+            return fn(res);
+        }
+    }
+}
+
+function myCompose(...args) {
+    // let res;
+    let len = args.length - 1;
+    return function (x) {
+        let res = x;
+        while(len) {
+            res = args[len--](res)
+        }
+        return res;
+    }
+}
+
 
 // 写法二，迭代
 function compose2(...args) {
@@ -80,5 +105,5 @@ function compose3(...args) {
     })
 }
 
-let x = compose3(add10, mul10,add100)(10);
+let x = myCompose(add10, mul10,add100)(10);
 console.log(x);

@@ -23,3 +23,6 @@ function debounce(fn, time) {
         },time)
     }
 }
+
+let obj = {}
+obj.f = debounce(); // this -> obj

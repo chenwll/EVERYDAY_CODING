@@ -11,12 +11,15 @@
     //Sub.prototype.constructor=Sub
     Sub.prototype=subPrototype
   }
-  
+
+
+
+
   function Super(name){
     this.name=name
   }
   Super.prototype.sayHi=function(){
-    console.log(this.name)//ccdida
+    console.log(this.name)
   }
 
   function Sub(name){
@@ -24,8 +27,9 @@
     Super.call(this,name)
   }
 
-  // 继承方法
-  inheritPrototype(Sub,Super)
+ // 继承方法
+ inheritPrototype(Sub,Super)
+
 
   Sub.prototype.sayHello=function(){
     console.log('sayHello')

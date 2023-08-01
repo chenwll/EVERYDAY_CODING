@@ -15,17 +15,20 @@ function isObject(value) {
 
 // 循环引用检测
 let testSet = new Set();
+var weakMap = new WeakMap();
 
 function deepCopy(originValue) {
     //如果是原始类型，直接返回
     if(!isObject(originValue)) {
         return originValue
     }
-    // 检测循环引用
-    if(testSet.has(originValue)) throw new Error('存在循环引用')
 
-    // 添加样本，用于循环引用的检测
-    testSet.add(originValue)
+
+    // // 检测循环引用
+    // if(testSet.has(originValue)) throw new Error('存在循环引用')
+    //
+    // // 添加样本，用于循环引用的检测
+    // testSet.add(originValue)
 
     // 正则类型
     if(originValue instanceof RegExp) {
@@ -53,9 +56,16 @@ function deepCopy(originValue) {
 
     const newObj = Array.isArray(originValue)? []: {};
 
+    if(weakMap.has(originValue)) {
+        return weakMap.get(originValue);
+    }
+
+    weakMap.set(originValue,newObj)
+
     for(const key in originValue) {
         newObj[key] = deepCopy(originValue[key]);
     }
+
 
     // 拷贝Symbol类型
     const symbolKeys = Object.getOwnPropertySymbols(originValue)

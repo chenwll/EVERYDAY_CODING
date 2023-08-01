@@ -58,6 +58,23 @@
 //     return AddFn;
 // }
 
+
+function curry() {
+    let nums = [...arguments];
+    function AddFn() {
+        nums.push(...arguments);
+        return AddFn
+    }
+    AddFn.sumOf = function () {
+        return nums.reduce((a,b) => a + b);
+    }
+    return AddFn
+}
+
+let y = curry(1,2,3)(1,2,3)(1,2,3).sumOf()
+console.log(y)
+
+
 // 如果使用的是箭头函数的话，arguments是父作用域的arguments，所以是3*(1+2+3)
 function Add() {
     const nums = [...arguments];

@@ -11,6 +11,18 @@ Function.prototype.myBind = function (context, ...args) {
     return fBound;
 }
 
+
+Function.prototype.myBind = function (context, ...args) {
+    let self = this;
+    let fn = function (...innerArgs) {
+        self.apply(
+            this instanceof fn ? this: context,
+            innerArgs.concat(args)
+        )
+    }
+    fn.prototype = Object.create(this.prototype)
+}
+
 const obj = {
     name: 'poetries',
     age: 18

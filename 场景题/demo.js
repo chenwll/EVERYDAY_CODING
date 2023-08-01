@@ -1,13 +1,45 @@
-function outer() { // outer函数内部为闭包函数提供一个闭包作用域(outer)
-    let bar = "bar";
-    let unused = function() {
-        console.log(bar); // 再创建一个闭包函数，并在其中使用外部函数中的变量
+class Scheduler {
+    constructor(max) {
+        // 最大可并发任务数
+        this.max = max;
+        // 当前并发任务数
+        this.count = 0;
+        // 阻塞的任务队列
+        this.queue = [];
     }
-    let inner = function() {
-        // console.log(bar); // 注释该行，内部inner函数不再使用外部outer函数中的变量
-        debugger;
-        console.log("inner function run.");
+
+    async add(fn) {
+        if (this.count >= this.max) {
+            // 若当前正在执行的任务，达到最大容量max
+            // 阻塞在此处，等待前面的任务执行完毕后将resolve弹出并执行
+            await new Promise(resolve => this.queue.push(resolve));
+        }
+        // 当前并发任务数++
+        this.count++;
+        // 使用await执行此函数
+
+        //执行传进来的函数 等待执行完，这是传的参数
+        const res = await fn();
+        // 执行完毕，当前并发任务数--
+        this.count--;
+        // 若队列中有值，将其resolve弹出，并执行
+        // 以便阻塞的任务，可以正常执行
+        this.queue.length && this.queue.shift()();
+        // 返回函数执行的结果
+        return res;
     }
-    inner(); // 直接在外部函数中执行闭包函数inner
 }
-outer();
+const sleep = time => new Promise(resolve => setTimeout(resolve, time));
+
+const scheduler = new Scheduler(2);
+
+const addTask = (time, val) => {
+    scheduler.add(() => {
+        return sleep(time).then(() => console.log(val));
+    });
+};
+
+addTask(6000, '1');
+addTask(1000, '2');
+addTask(300, '3');
+addTask(400, '4');

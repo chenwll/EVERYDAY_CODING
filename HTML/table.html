@@ -1,53 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>table</title>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style>
+        /* + 选择器选取紧接着的相邻连续兄弟元素 */
+        .d1 p + p {
+            color: red;
+        }
+
+        /* ~ 选择器选取后面所有的同级兄弟元素 */
+        .d2 p ~ p {
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
-    <table class="father">
-        <tr class="head"></tr>
-    </table>
-    <script>
-        const j = {"China ID Verification":{"sourceStatus":"Successful","nameMatchScore":"1.000","errorMessage":"","identityVerified":true,"addressMatchScore":"N/A","returnedData":{"address":"四川省内江市资中县","gender":"Male","source":"dz1"},"verifications":{"idCardNo":true,"fullName":true,"dateOfBirth":true},"status":0,"safeHarbourScore":"M2"},"England ID Verification":{"sourceStatus":"Successful","nameMatchScore":"1.000","errorMessage":"","identityVerified":true,"addressMatchScore":"N/A","returnedData":{"address":"四川省内江市资中县","gender":"Male","source":"dz1"},"verifications":{"idCardNo":true,"fullName":true,"dateOfBirth":true},"status":0,"safeHarbourScore":"M2"}}
-        const obj = JSON.parse(JSON.stringify(j))
-        console.log( obj,Object.keys(obj))
-        const map = new Map();
-        for(let item in obj) {
-            if(map.has('country')) {
-                const arr = map.get('country')
-                arr.push(item)
-                map.set('country',arr)
-            }else {
-                map.set('country',[item])
-            }
-            let tmp = obj[item];
-            if(typeof tmp === 'object') {
-                for(let key in tmp) {
-                    // console.log(key,'key',map.get(key),tmp[key])
-                    if(map.has(key)) {
-                        const arr = map.get(key)
-                        arr.push(tmp[key])
-                        map.set(key,arr)
-                        // map.set(key, );
-                    }else {
-                        map.set(key,[tmp[key]])
-                    }
-                }
-            }
-        }
-        for(let item of map.keys()) {
-            const arr = [item,...map.get(item)]
-            const th = document.createElement('tr')
-            for(let item of arr) {
-                const x = document.createElement('th')
-                x.innerHTML = item
-                th.appendChild(x)
-            }
-            const father = document.querySelector('.father')
-            father.appendChild(th)
-        }
-    </script>
+<div class="d1">
+    <p>第一个段落</p>
+    <p>第二个段落</p>
+    <p>第二个段落</p>
+    <span>span</span>
+    <p>第三个段落</p>
+</div>
+<br />
+<div class="d2">
+    <p>第一个段落</p>
+    <p>第二个段落</p>
+    <span>span</span>
+    <p>第三个段落</p>
+</div>
 </body>
 </html>
