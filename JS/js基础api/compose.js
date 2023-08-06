@@ -105,5 +105,21 @@ function compose3(...args) {
     })
 }
 
-let x = myCompose(add10, mul10,add100)(10);
+function myCompose2(...args) {
+    return function (x) {
+        return args.reduceRight((acc,cur) => {
+            return cur(acc)
+        },x)
+    }
+}
+
+function reduxCompose(...args) {
+    return args.reduce((acc,cur) => {
+        return (x) => {
+            return acc(cur(x))
+        }
+    })
+}
+
+let x = myCompose2(add10, mul10,add100)(10);
 console.log(x);

@@ -18,16 +18,12 @@ function divide2(num) {
 }
 
 // 使用展开符来获取数组格式的 pipe 参数
-function pipe(...funcs) {
-    // function callback(input, func) {
-    //     return func(input)
-    // }
-
-    return function(param) {
-        return funcs.reduce((input,func)=> {
-            return func(input)
-        },param)
-    }
+function pipe(...func) {
+   return function (x) {
+       return func.reduce((acc,cur) => {
+           return cur(acc)
+       },x)
+   }
 }
 
 

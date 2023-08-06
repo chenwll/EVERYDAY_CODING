@@ -5,26 +5,60 @@
 // 已经完成的任务列表
 
 // es7的实现
-async function asyncPool(poolLimit, array, iteratorFn) {
-    const ret  = [];
-    // 存储正在执行的异步任务
-    const executing = [];
-    for(let item of array) {
-        // () => iteratorFn(item) 为了传递参数
-        let p = Promise.resolve().then(()=>iteratorFn(item));
-        // 存储所有的异步任务
-        ret.push(p)
-        // 超出了限制
-        if(array.length >= poolLimit) {
-            // 当任务完成后，从正在执行的任务数组中移除已完成的任务
-            const e = p.then(() => executing.splice(executing.indexOf(e), 1));
-            executing.push(e);
-            if(executing.length >= poolLimit){
-                await Promise.race(executing);
-            }
+// async function asyncPool(poolLimit, array, iteratorFn) {
+//     const ret  = [];
+//     // 存储正在执行的异步任务
+//     const executing = [];
+//     for(let item of array) {
+//         // () => iteratorFn(item) 为了传递参数
+//         // 开始执行任务，使用promise.resolve包裹一层是为什么进入微任务队列执行
+//         let p = Promise.resolve().then(()=>iteratorFn(item));
+//         // 存储所有的异步任务
+//         ret.push(p)
+//         // 超出了限制
+//         if(array.length >= poolLimit) {
+//             // 当任务完成后，从正在执行的任务数组中移除已完成的任务
+//             const e = p.then(() => executing.splice(executing.indexOf(e), 1));
+//             executing.push(e);
+//             if(executing.length >= poolLimit){
+//                 await Promise.race(executing);
+//             }
+//         }
+//     }
+//     return Promise.all(ret)
+// }
+
+async function asyncPool(poolLimit, iterator,iteratorFn) {
+    const ret = [];
+    const executing = new Set();
+    for(const item of iterator) {
+        const p = Promise.resolve().then(() => iteratorFn(item));
+        ret.push(p);
+        executing.add(p);
+        const clean =  () => executing.delete(p);
+        p.then(clean).catch(clean);
+        if(executing.size >= poolLimit) {
+            await Promise.race(executing)
         }
     }
-    return Promise.all(ret)
+    return Promise.all(ret);
+}
+
+
+async function asyncPool(poolLimit, iterator, iteratorFn) {
+    const ret = [];
+    const executing = new Set();
+    for(const item of iterator) {
+        const p = Promise.resolve().then(() => iteratorFn(item));
+        ret.push(p);
+        executing.add(p);
+        const clean = () => executing.delete(p);
+        p.then(clean).catch(clean);
+        if(executing.size >= poolLimit) {
+            await Promise.race(executing);
+        }
+    }
+    return Promise.all(ret);
 }
 
 // async function asyncPoll(poolLimit,array,iteratorFn) {

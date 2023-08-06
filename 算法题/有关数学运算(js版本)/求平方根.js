@@ -36,7 +36,7 @@ function power(num) {
 // }
 //
 let res = power(8);
-console.log(res)
+// console.log(res)
 
 
 
@@ -50,16 +50,14 @@ function mySqrt(num ,n) {
     let l = 0, r = num;
     while(l < r) {
         let mid = (l + r) / 2;
-        if(abs(mid*mid - num) < n) return r;
+        // if(abs(mid*mid - num) < n) return r;
         if(mid*mid >= num) r = mid;
         else l = mid + n;
     }
+    return l
 }
-let r = mySqrt(8,0.001);
+let r = mySqrt(8,0.01);
 console.log(r)
-
-
-
 
 
 

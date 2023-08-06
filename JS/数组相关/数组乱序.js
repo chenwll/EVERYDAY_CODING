@@ -3,9 +3,10 @@ function getRandom(min, max) {
 }
 
 function shuffle(arr) {
-    for(let i = 0; i < arr.length; i++) {
-        let rand = getRandom(0,i);
-        [arr[i],arr[rand]] = [arr[rand],arr[i]]
+    for(let i = arr.length - 1; i > 0; i--) {
+        // [0, 1) [0, i + 1) Math.floor() 函数总是返回小于等于一个给定数字的最大整数。
+        const index = Math.floor(Math.random()*(i + 1));
+        [arr[i],arr[index]] = [arr[index],arr[i]];
     }
     return arr;
 }

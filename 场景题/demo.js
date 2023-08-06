@@ -1,45 +1,31 @@
-class Scheduler {
-    constructor(max) {
-        // 最大可并发任务数
-        this.max = max;
-        // 当前并发任务数
-        this.count = 0;
-        // 阻塞的任务队列
-        this.queue = [];
+function add(s1,s2) {
+    const str1 = s1.split('').reverse().join('');
+    const str2 = s2.split('').reverse().join('');
+    console.log(str1,str2)
+    let res = ""
+    let tmp = 0;
+    let i = 0,j = 0;
+    for( ;i < str1.length&&j < str2.length; i++,j++) {
+        tmp += Number(str1[i]) + Number(str2[j]);
+        res += (tmp % 10);
+        tmp = Math.floor(tmp / 10);
     }
-
-    async add(fn) {
-        if (this.count >= this.max) {
-            // 若当前正在执行的任务，达到最大容量max
-            // 阻塞在此处，等待前面的任务执行完毕后将resolve弹出并执行
-            await new Promise(resolve => this.queue.push(resolve));
-        }
-        // 当前并发任务数++
-        this.count++;
-        // 使用await执行此函数
-
-        //执行传进来的函数 等待执行完，这是传的参数
-        const res = await fn();
-        // 执行完毕，当前并发任务数--
-        this.count--;
-        // 若队列中有值，将其resolve弹出，并执行
-        // 以便阻塞的任务，可以正常执行
-        this.queue.length && this.queue.shift()();
-        // 返回函数执行的结果
-        return res;
+    console.log(res,i,j)
+    while(i  < str1.length) {
+        tmp += Number(str1[i++]);
+        res += ( tmp % 10);
+        tmp = Math.floor(tmp / 10);
     }
+    while(j < str2.length) {
+        tmp += Number(str2[j++]);
+        res += (tmp % 10);
+        tmp = Math.floor(tmp / 10);
+    }
+    if(tmp) {
+        res += tmp;
+    }
+    return res.split('').reverse().join('');
 }
-const sleep = time => new Promise(resolve => setTimeout(resolve, time));
 
-const scheduler = new Scheduler(2);
-
-const addTask = (time, val) => {
-    scheduler.add(() => {
-        return sleep(time).then(() => console.log(val));
-    });
-};
-
-addTask(6000, '1');
-addTask(1000, '2');
-addTask(300, '3');
-addTask(400, '4');
+let res = add("269","888");
+console.log(res)
