@@ -17,6 +17,7 @@ class HashRouter {
         if(event.newURL) {
             this.currentHash = event.newURL.split("#")[1];
         }else {
+            // load事件，通过window.location.hash拿到
             this.currentHash = window.location.hash.slice(1);
         }
         this.matchURl()
@@ -43,3 +44,28 @@ new HashRouter([
         component: '<div>关于</div>'
     },
 ]);
+
+
+class MyRoute {
+    constructor(route) {
+        this.route = route;
+        this.currentHash = '';
+        window.addEventListener('load',this.refresh)
+        window.addEventListener('hashchange',this.refresh)
+    }
+
+    refresh(event) {
+        // hashChange
+        if(event.newURL) {
+            this.currentHash = event.newURL.split('#')[1];
+        }else {
+            this.currentHash = event.location.hash.slice(1)
+        }
+    }
+
+    matchUrl() {
+
+    }
+
+
+}
